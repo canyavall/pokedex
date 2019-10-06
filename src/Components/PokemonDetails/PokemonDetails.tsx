@@ -2,6 +2,7 @@ import React from 'react';
 import {Button, Col, Modal, Panel, Row, Progress} from 'rsuite';
 import {Details, Pokemon} from "../../Store/Models/Pokedex/PokedexTypes";
 import usePokemonDetails from "./PokemonDetailsHook";
+import StatsBox from "../StatsBox/StatsBox";
 const { Line } = Progress;
 
 export interface PokemonCardProps {
@@ -45,20 +46,12 @@ const PokemonDetail: React.FC<PokemonCardProps> = (props) => {
                 </Row>
                 <div>
                     <Panel bordered>
-                        <Row>
-                            <Col md={3}>HP: </Col>
-                            <Col md={19}><Line percent={30} strokeColor="#ffc107" /> </Col>
-                            <Col md={2}>{stats.hp}</Col>
-                        </Row>
-                        <Row>
-                            <Col md={3}>Attack: </Col>
-                            <Col md={19}><Line percent={30} strokeColor="#ffc107" /></Col>
-                            <Col md={2}>{stats.attack}</Col>
-                        </Row>
-                        <p>Defense: {stats.def}</p>
-                        <p>Sp. Atk: {stats.spat}</p>
-                        <p>Sp. Def: {stats.spdef}</p>
-                        <p>Speed: {stats.speed}</p>
+                        <StatsBox stat={stats.hp} title={'HP'}/>
+                        <StatsBox stat={stats.at} title={'Attack'}/>
+                        <StatsBox stat={stats.def} title={'Defense'}/>
+                        <StatsBox stat={stats.spat} title={'Sp. Atk'}/>
+                        <StatsBox stat={stats.spdef} title={'Sp. Def'}/>
+                        <StatsBox stat={stats.speed} title={'Speed'}/>
                     </Panel>
                 </div>
             </Modal.Body>
