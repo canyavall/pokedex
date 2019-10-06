@@ -27,7 +27,6 @@ const PokedexEffects = (dispatch) => ({
             await fetch(url)
                 .then((response) => response.json())
                 .then((data) => dispatch.pokedex.setPokemon(data))
-            const data = await fetch(url)
         } catch (e) {
             dispatch.pokedex.setPokemonRequestState(RequestState.Error)
         }

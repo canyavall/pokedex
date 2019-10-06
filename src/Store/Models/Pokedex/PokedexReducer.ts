@@ -1,5 +1,5 @@
 // @ts-ignore
-import {Details, PokedexState, Pokemon, PokemonList, PokemonResponse, RequestState} from "./PokedexTypes"
+import {Details, OrderPokedexBy, PokedexState, PokemonResponse, RequestState} from "./PokedexTypes"
 import {keyBy} from 'lodash'
 
 /**
@@ -40,7 +40,7 @@ const PokedexReducer = {
     setPokemonsRequestState: (state: PokedexState, payload: RequestState): PokedexState => {
         return {
             ...state,
-            pokemonsRequestState: RequestState.Error
+            pokemonsRequestState: payload
         }
     },
     /**
@@ -65,12 +65,43 @@ const PokedexReducer = {
     setPokemonRequestState: (state: PokedexState, payload: RequestState): PokedexState => {
         return {
             ...state,
-            pokemonRequestState: RequestState.Error
+            pokemonRequestState: payload
+        }
+    },
+    /**
+     * Change current page for pagination
+     * @param state
+     * @param payload
+     */
+    setPokedexListCurrentPage: (state: PokedexState, payload: number): PokedexState => {
+        return {
+            ...state,
+            pokedexListCurrentPage: payload
         }
     },
 
-    setPokemonList: (state: PokedexState, payload: PokemonList) => {
+    /**
+     * Change number of elements to show in pokedex list
+     * @param state
+     * @param payload
+     */
+    setPokedexListElementsToShow: (state: PokedexState, payload: number): PokedexState => {
+        return {
+            ...state,
+            pokedexListElementsToShow: payload
+        }
+    },
 
+    /**
+     * Change the order of the Pokemons in the Pokedex list
+     * @param state
+     * @param payload
+     */
+    setPokedexListOrderBy: (state: PokedexState, payload: OrderPokedexBy): PokedexState => {
+        return {
+            ...state,
+            pokedexListOrderBy: payload
+        }
     }
 }
 

@@ -1,5 +1,4 @@
 import React from 'react';
-import { Button } from 'rsuite';
 
 const MyPokemon: React.FC = () => {
     return (
