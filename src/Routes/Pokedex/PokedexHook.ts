@@ -5,16 +5,17 @@ import store from "../../Store/store";
 
 const usePokedex = () => {
 
-    // Fetch data
-    useEffect(() => {
-        store.dispatch.pokedex.fetchPokemons()
-    }, [])
-
     // Get data from reducer
     const pokemons = useSelector(select.pokedex.getPokemons)
     const pokedexListCurrentPage= useSelector(select.pokedex.getPokedexListCurrentPage)
     const pokedexListElementsToShow= useSelector(select.pokedex.getPokedexListElementsToShow)
     const pokedexListOrderBy= useSelector(select.pokedex.getPokedexListOrderBy)
+
+
+    // Fetch data
+    useEffect(() => {
+        !pokemons && store.dispatch.pokedex.fetchPokemons()
+    }, [])
 
     // Prepare constants
     const maxIndex = pokedexListCurrentPage * pokedexListElementsToShow

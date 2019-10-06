@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import {Panel} from 'rsuite';
-import {Pokemon} from "../../../../Store/Models/Pokedex/PokedexTypes";
+import {Pokemon} from "../../Store/Models/Pokedex/PokedexTypes";
 import PokemonDetail from "../PokemonDetails/PokemonDetails";
 import usePokemonCard from "./PokemonCardHook";
 
@@ -28,7 +28,7 @@ const PokemonCard: React.FC<PokemonCardProps> = ({pokemon}) => {
 
 const styles = {
     container: {
-        width: 210,
+        width: 205,
         height: 175,
         marginBottom: 10,
         marginRight: 10,

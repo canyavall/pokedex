@@ -1,7 +1,7 @@
 import React from 'react';
 import {Loader, Pagination, Panel} from 'rsuite';
 import usePokedex from "./PokedexHook";
-import PokemonCard from "./Components/PokemonCard/PokemonCard";
+import PokemonCard from "../../Components/PokemonCard/PokemonCard";
 import store from "../../Store/store";
 
 const Pokedex: React.FC = () => {

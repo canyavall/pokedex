@@ -17,7 +17,6 @@ const AppRouter: React.FC = () => {
     return <Router>
         <Header />
             <Route path="/" exact component={Pokedex}/>
-            <Route path="/pokemon/:id" exact component={Pokemon}/>
             <Route path="/mypokemon" exact component={MyPokemon}/>
     </Router>
 }

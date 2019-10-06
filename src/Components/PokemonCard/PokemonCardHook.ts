@@ -1,6 +1,6 @@
 import {useState} from "react";
-import store from "../../../../Store/store";
-import select from "../../../../Store/selectors";
+import store from "../../Store/store";
+import select from "../../Store/selectors";
 import {useSelector} from 'react-redux'
 
 const usePokemonCard = (pokemon) => {

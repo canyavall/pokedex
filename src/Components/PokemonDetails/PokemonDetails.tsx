@@ -1,6 +1,6 @@
 import React from 'react';
 import {Button, Modal, Panel} from 'rsuite';
-import {Details, Pokemon} from "../../../../Store/Models/Pokedex/PokedexTypes";
+import {Details, Pokemon} from "../../Store/Models/Pokedex/PokedexTypes";
 import usePokemonDetails from "./PokemonDetailsHook";
 
 export interface PokemonCardProps {
