@@ -111,7 +111,7 @@ export interface Type3 {
 
 export interface Type2 {
     slot: number;
-    type: Type2;
+    type: Type3;
 }
 
 export interface Details {

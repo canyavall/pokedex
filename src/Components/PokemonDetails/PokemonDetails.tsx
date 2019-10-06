@@ -23,7 +23,8 @@ const PokemonDetail: React.FC<PokemonCardProps> = (props) => {
         addPokemon,
         removePokemon,
         closeModal,
-        isInMyPokemons
+        isInMyPokemons,
+        types
     } = usePokemonDetails(props)
 
     return (
@@ -37,7 +38,7 @@ const PokemonDetail: React.FC<PokemonCardProps> = (props) => {
                     <Col md={12} style={styles.dataContainer}>
                         <Panel bordered>
                             <p>National N°: {finalId}</p>
-                            <p>Type: </p>
+                            <p>Type: {types}</p>
                             <p>Height: {height}</p>
                             <p>Weight: {weight}</p>
                             <p>Abilities: {abilities}</p>

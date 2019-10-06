@@ -1,5 +1,5 @@
 import React from 'react';
-import {Panel, Icon} from 'rsuite';
+import {Icon} from 'rsuite';
 import {Pokemon} from "../../Store/Models/Pokedex/PokedexTypes";
 import PokemonDetail from "../PokemonDetails/PokemonDetails";
 import usePokemonCard from "./PokemonCardHook";
@@ -27,13 +27,17 @@ const PokemonCard: React.FC<PokemonCardProps> = ({pokemon}) => {
     const containerFinalStyle = isHover ? {...styles.container, ...styles.isHover} : styles.container
 
     return (
-        <div style={containerFinalStyle} onClick={onOpenDetail} onMouseEnter={() => setIsHover(true)} onMouseLeave={() => setIsHover(false)}>
-                <div style={styles.contentWrapper}>
-                    {showPicture &&
-                    <img src={imageUrl} style={styles.image} alt={name} onError={() => setShowPicture(false)}/>}
-                    {isInMyPokemons && <Icon icon={'star'} color={'blue'} size="lg"/>}
-                    <h5>{'#' + finalId + ' - ' + name}</h5>
-                </div>
+        <div style={containerFinalStyle}
+             onClick={onOpenDetail}
+             onMouseEnter={() => setIsHover(true)}
+             onMouseLeave={() => setIsHover(false)}
+             onMouseUp={() => setIsHover(false)}>
+            <div style={styles.contentWrapper}>
+                {showPicture &&
+                <img src={imageUrl} style={styles.image} alt={name} onError={() => setShowPicture(false)}/>}
+                {isInMyPokemons && <Icon icon={'star'} color={'blue'} size="lg"/>}
+                <h5>{'#' + finalId + ' - ' + name}</h5>
+            </div>
             {showModal &&
             <PokemonDetail setShowModal={setShowModal} pokemon={pokemon} pokemonDetails={pokemonDetails}/>}
         </div>
@@ -47,7 +51,7 @@ const styles = {
         marginBottom: 10,
         marginRight: 10,
         marginTop: 10,
-        borderRadius:5,
+        borderRadius: 5,
         border: '1px solid Gainsboro'
     } as React.CSSProperties,
     contentWrapper: {

@@ -1,5 +1,5 @@
 import store from "../../Store/store";
-import {extractAbilitiesFromData, extractStatsFromData} from "../../Utils/utils";
+import {extractAbilitiesFromData, extractStatsFromData, extractTypesFromData} from "../../Utils/utils";
 import select from "../../Store/selectors";
 import {useSelector} from 'react-redux'
 
@@ -17,6 +17,8 @@ const usePokemonDetails = ({pokemon, pokemonDetails, setShowModal}) => {
 
     const abilities = extractAbilitiesFromData(pokemonDetails)
     const stats = extractStatsFromData(pokemonDetails)
+    const types = extractTypesFromData(pokemonDetails)
+
     const height = pokemonDetails && pokemonDetails.height && ((pokemonDetails.height / 10).toString() + ' m')
     const weight = pokemonDetails && pokemonDetails.weight && ((pokemonDetails.weight / 10).toString() + ' kg')
 
@@ -48,6 +50,7 @@ const usePokemonDetails = ({pokemon, pokemonDetails, setShowModal}) => {
         height,
         weight,
         stats,
+        types,
 
         addPokemon,
         removePokemon,

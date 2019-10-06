@@ -25,7 +25,7 @@ export const extractAbilitiesFromData = memoize((pokemonDetails: Details) => {
  * Extract the stats data from the parsed data
  * @param pokemonDetails
  */
-export const extractStatsFromData = memoize((pokemonDetails) => {
+export const extractStatsFromData = memoize((pokemonDetails: Details) => {
     let stats: Stats = {
         speed: 0,
         spdef: 0,
@@ -45,4 +45,15 @@ export const extractStatsFromData = memoize((pokemonDetails) => {
     })
 
     return stats
+})
+
+/**
+ * Extract the types data from the parsed data
+ * @param pokemonDetails
+ */
+export const extractTypesFromData = memoize((pokemonDetails: Details) => {
+    return pokemonDetails && pokemonDetails.types && pokemonDetails.types.map((type, index) => {
+        const name = (index === 0) ? type.type.name : '/' + type.type.name
+        return name
+    })
 })
