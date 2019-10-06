@@ -2,7 +2,6 @@ import React from 'react';
 import {Button, Modal, Panel} from 'rsuite';
 import {Details, Pokemon} from "../../Store/Models/Pokedex/PokedexTypes";
 import usePokemonDetails from "./PokemonDetailsHook";
-import store from "../../Store/store";
 
 export interface PokemonCardProps {
     pokemon: Pokemon,
@@ -11,8 +10,20 @@ export interface PokemonCardProps {
 }
 
 const PokemonDetail: React.FC<PokemonCardProps> = (props) => {
-    const {setShowModal} = props
-    const {id, name, imageUrl, finalId, abilities, height, weight, stats} = usePokemonDetails(props)
+
+    const {
+        name,
+        imageUrl,
+        finalId,
+        abilities,
+        height,
+        weight,
+        stats,
+        addPokemon,
+        removePokemon,
+        closeModal,
+        isInMyPokemons
+    } = usePokemonDetails(props)
 
     return (
         <Modal show={true}>
@@ -44,17 +55,13 @@ const PokemonDetail: React.FC<PokemonCardProps> = (props) => {
                 </div>
             </Modal.Body>
             <Modal.Footer>
-                <Button onClick={(e) => {
-                    store.dispatch.mypokemon.addPokemon(id)
-                    setShowModal(false)
-                    e && e.stopPropagation()
-                }} appearance="primary">
+                {!isInMyPokemons && <Button onClick={addPokemon} appearance="primary">
                     Add to My Pokemons
-                </Button>
-                <Button onClick={(e) => {
-                    setShowModal(false)
-                    e && e.stopPropagation()
-                }} appearance="subtle">
+                </Button>}
+                {isInMyPokemons && <Button onClick={removePokemon} appearance="primary" color="red">
+                    Remove from My Pokemons
+                </Button>}
+                <Button onClick={closeModal} appearance="subtle">
                     Close
                 </Button>
 

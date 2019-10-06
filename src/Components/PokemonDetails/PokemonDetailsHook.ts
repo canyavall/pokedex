@@ -1,44 +1,44 @@
+import store from "../../Store/store";
+import {extractAbilitiesFromData, extractStatsFromData} from "../../Utils/utils";
+import select from "../../Store/selectors";
+import {useSelector} from 'react-redux'
+
 export interface UsePokemonDetails {
 
 }
-export type stats= {
-    speed: number;
-    spdef: number;
-    spat: number;
-    def: number;
-    at: number;
-    hp: number;
-}
-const usePokemonDetails = ({pokemon, pokemonDetails}) => {
+
+
+const usePokemonDetails = ({pokemon, pokemonDetails, setShowModal}) => {
     const {name, id} = pokemon
-    let finalId = id.toString().padStart(3, "000")
+
+    const myPokemonList = useSelector(select.mypokemon.getMyPokemonList)
+
+    const finalId = id.toString().padStart(3, "000")
     const imageUrl = `https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${finalId}.png`
 
-    const abilities = pokemonDetails && pokemonDetails.abilities && pokemonDetails.abilities.map((ability, index) => {
-        const name = (index === 0) ? ability.ability.name : '/' + ability.ability.name
-        return name
-    })
-
-    let stats = {
-        speed: 0,
-        spdef: 0,
-        spat: 0,
-        def: 0,
-        at: 0,
-        hp: 0
-    }
-
-    pokemonDetails && pokemonDetails.stats && pokemonDetails.stats.forEach((stat) => {
-        if (stat.stat.name === 'speed') stats.speed = stat.base_stat
-        if (stat.stat.name === 'special-defense') stats.spdef = stat.base_stat
-        if (stat.stat.name === 'special-attack') stats.spat = stat.base_stat
-        if (stat.stat.name === 'defense') stats.def = stat.base_stat
-        if (stat.stat.name === 'attack') stats.at = stat.base_stat
-        if (stat.stat.name === 'hp') stats.hp = stat.base_stat
-    })
-
+    const abilities = extractAbilitiesFromData(pokemonDetails)
+    const stats = extractStatsFromData(pokemonDetails)
     const height = pokemonDetails && pokemonDetails.height && ((pokemonDetails.height / 10).toString() + ' m')
     const weight = pokemonDetails && pokemonDetails.weight && ((pokemonDetails.weight / 10).toString() + ' kg')
+
+    const addPokemon = (e) => {
+        store.dispatch.mypokemon.addPokemon(id)
+        closeModal(e)
+    }
+
+    const removePokemon = (e) => {
+        store.dispatch.mypokemon.removePokemon(id)
+        closeModal(e)
+    }
+
+    const closeModal = (e) => {
+        setShowModal(false)
+        e && e.stopPropagation()
+    }
+
+    // Checks if this pokemon id is already in mypokemons list
+    const isInMyPokemons = myPokemonList.includes(id)
+
 
     return {
         id,
@@ -49,7 +49,13 @@ const usePokemonDetails = ({pokemon, pokemonDetails}) => {
         abilities,
         height,
         weight,
-        stats
+        stats,
+
+        addPokemon,
+        removePokemon,
+        closeModal,
+
+        isInMyPokemons
     }
 }
 
