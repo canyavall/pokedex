@@ -12,19 +12,23 @@ const PokedexReducer = {
      * @param payload
      */
     setAllPokemons: (state: PokedexState, payload: PokemonResponse): PokedexState => {
+        let pokemons = []
         // get id and save in the object for each one of the pokemons
-        const pokemons = payload.results.map((pokemon) => {
+        payload.results.forEach((pokemon) => {
             const {name, url} = pokemon
             //@ts-ignore
             const id = url.replace('https://pokeapi.co/api/v2/pokemon/', '')
             const cleanId = Number(id.substring(0, id.length - 1))
-            return {
-                name: name,
-                url: url,
-                id: cleanId
+            // Remove some strange pokemons
+            if (cleanId.toString().length <= 3) {
+                pokemons.push({
+                    name: name,
+                    url: url,
+                    id: cleanId
+                })
             }
         })
-
+console.log(pokemons)
         return {
             ...state,
             pokemons: keyBy(pokemons, 'id'),
