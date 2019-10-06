@@ -14,6 +14,6 @@ const styles = {
     container: {
         width: '50%',
         margin: '0 auto'
-    }
+    } as React.CSSProperties
 }
 export default App;
