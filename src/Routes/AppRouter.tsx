@@ -1,6 +1,5 @@
 import React from "react";
 import {BrowserRouter as Router, Route} from "react-router-dom";
-import Pokemon from './Pokemon/Pokemon'
 import Pokedex from './Pokedex/Pokedex'
 import MyPokemon from './MyPokemon/MyPokemon'
 import Header from "../Components/Header/Header";
@@ -16,8 +15,8 @@ import Header from "../Components/Header/Header";
 const AppRouter: React.FC = () => {
     return <Router>
         <Header />
-            <Route path="/" exact component={Pokedex}/>
-            <Route path="/mypokemon" exact component={MyPokemon}/>
+        <Route path="/" exact component={Pokedex}/>
+        <Route path="/mypokemon" exact component={MyPokemon}/>
     </Router>
 }
 

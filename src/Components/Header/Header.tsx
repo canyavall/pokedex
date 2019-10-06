@@ -2,13 +2,13 @@ import React, {useState} from 'react';
 import {Nav} from 'rsuite';
 import {Link} from "react-router-dom";
 
-export const Header: React.FC = () => {
-    const [activeKey, setActiveKey] = useState('pokedex')
+const NavLink = props => <Nav.Item componentClass={Link} {...props} />;
 
+export const Header: React.FC = () => {
     return (
-            <Nav appearance="subtle" activeKey={activeKey} onSelect={setActiveKey}>
-                <Nav.Item eventKey="pokedex"> <Link to={'/'}>Pokedex</Link> </Nav.Item>
-                <Nav.Item eventKey="mypokemons"><Link to={'mypokemon'}>My Pokemons</Link></Nav.Item>
+            <Nav appearance="subtle">
+                <NavLink to="/">Home</NavLink>
+                <NavLink to="/mypokemon">My Pokemons</NavLink>
             </Nav>
     );
 }

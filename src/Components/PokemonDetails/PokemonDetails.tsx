@@ -2,6 +2,7 @@ import React from 'react';
 import {Button, Modal, Panel} from 'rsuite';
 import {Details, Pokemon} from "../../Store/Models/Pokedex/PokedexTypes";
 import usePokemonDetails from "./PokemonDetailsHook";
+import store from "../../Store/store";
 
 export interface PokemonCardProps {
     pokemon: Pokemon,
@@ -11,7 +12,7 @@ export interface PokemonCardProps {
 
 const PokemonDetail: React.FC<PokemonCardProps> = (props) => {
     const {setShowModal} = props
-    const {name, imageUrl, finalId, abilities, height, weight, stats} = usePokemonDetails(props)
+    const {id, name, imageUrl, finalId, abilities, height, weight, stats} = usePokemonDetails(props)
 
     return (
         <Modal show={true}>
@@ -44,11 +45,19 @@ const PokemonDetail: React.FC<PokemonCardProps> = (props) => {
             </Modal.Body>
             <Modal.Footer>
                 <Button onClick={(e) => {
-                    setShowModal()
+                    store.dispatch.mypokemon.addPokemon(id)
+                    setShowModal(false)
+                    e && e.stopPropagation()
+                }} appearance="primary">
+                    Add to My Pokemons
+                </Button>
+                <Button onClick={(e) => {
+                    setShowModal(false)
                     e && e.stopPropagation()
                 }} appearance="subtle">
                     Close
                 </Button>
+
             </Modal.Footer>
         </Modal>
     );

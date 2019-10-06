@@ -41,6 +41,7 @@ const usePokemonDetails = ({pokemon, pokemonDetails}) => {
     const weight = pokemonDetails && pokemonDetails.weight && ((pokemonDetails.weight / 10).toString() + ' kg')
 
     return {
+        id,
         name,
         finalId,
         imageUrl,

@@ -21,7 +21,7 @@ const PokemonCard: React.FC<PokemonCardProps> = ({pokemon}) => {
                     <h5>{'#' + finalId + ' - ' + name}</h5>
                 </div>
             </Panel>
-            {showModal && <PokemonDetail setShowModal={() => setShowModal(false)} pokemon={pokemon} pokemonDetails={pokemonDetails}/>}
+            {showModal && <PokemonDetail setShowModal={setShowModal} pokemon={pokemon} pokemonDetails={pokemonDetails}/>}
         </div>
     );
 }

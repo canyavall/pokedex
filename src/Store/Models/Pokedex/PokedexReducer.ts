@@ -12,7 +12,6 @@ const PokedexReducer = {
      * @param payload
      */
     setAllPokemons: (state: PokedexState, payload: PokemonResponse): PokedexState => {
-        console.log(payload)
         // get id and save in the object for each one of the pokemons
         const pokemons = payload.results.map((pokemon) => {
             const {name, url} = pokemon

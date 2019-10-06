@@ -13,10 +13,9 @@ export const getMyPokemonListWithData = createSelector(
     getPokemons,
     (myPokemonList: string[], pokemons: Pokemons) => {
         let myPokemons = {}
-        for (var pokemonId in pokemons) {
-            if (myPokemonList.includes(pokemonId)) {
-                myPokemons[pokemonId] = pokemons
-            }
-        }
+        myPokemonList.forEach((id) => {
+            myPokemons[id] = pokemons[id]
+        })
+
         return myPokemons
     })
