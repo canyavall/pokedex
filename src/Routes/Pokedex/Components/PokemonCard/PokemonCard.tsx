@@ -1,25 +1,19 @@
 import React, {useState} from 'react';
 import {Panel} from 'rsuite';
-import {Pokemon} from "../../../Store/Models/Pokedex/PokedexTypes";
-import PokemonDetail from "./PokemonDetails";
+import {Pokemon} from "../../../../Store/Models/Pokedex/PokedexTypes";
+import PokemonDetail from "../PokemonDetails/PokemonDetails";
+import usePokemonCard from "./PokemonCardHook";
 
 export interface PokemonCardProps {
     pokemon: Pokemon
 }
 
 const PokemonCard: React.FC<PokemonCardProps> = ({pokemon}) => {
-    const {name, id} = pokemon
-    const [showPicture, setShowPicture] = useState(true)
-    const [showModal, setShowModal] = useState(false)
-
-    let finalId = id.toString().padStart(3, "000")
-    const imageUrl = `https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${finalId}.png`
+    const {name} = pokemon
+    const {imageUrl, showModal, setShowModal, showPicture, setShowPicture, finalId, onOpenDetail, pokemonDetails} = usePokemonCard(pokemon)
 
     return (
-        <div style={styles.container} onClick={() => {
-            console.log("INDACLICK")
-            setShowModal(true)
-        }}>
+        <div style={styles.container} onClick={onOpenDetail}>
             <Panel bordered>
                 <div style={styles.contentWrapper}>
                     {showPicture &&
@@ -27,7 +21,7 @@ const PokemonCard: React.FC<PokemonCardProps> = ({pokemon}) => {
                     <h5>{'#' + finalId + ' - ' + name}</h5>
                 </div>
             </Panel>
-            {showModal && <PokemonDetail setShowModal={() => setShowModal(false)} pokemon={pokemon}/>}
+            {showModal && <PokemonDetail setShowModal={() => setShowModal(false)} pokemon={pokemon} pokemonDetails={pokemonDetails}/>}
         </div>
     );
 }
