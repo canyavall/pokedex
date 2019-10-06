@@ -1,5 +1,5 @@
 import {init, RematchRootState} from '@rematch/core'
-import * as models from './models'
+import models from './Models/models'
 
 // Variables
 const store = init({
@@ -9,13 +9,7 @@ const store = init({
     }
 })
 
-// Exports
-export const dispatch: any = store.dispatch;
-
 // Export types
-export type Store = typeof store
-export type Dispatch = typeof store.dispatch
 export type State = RematchRootState<typeof models>
-export type Models = typeof models
 
 export default store

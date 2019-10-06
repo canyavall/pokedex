@@ -1,5 +1,5 @@
 // @ts-ignore
-import {Details, PokedexState, Pokemon, RequestState} from "./PokedexTypes"
+import {Details, PokedexState, Pokemon, PokemonList, PokemonResponse, RequestState} from "./PokedexTypes"
 import {keyBy} from 'lodash'
 
 /**
@@ -11,10 +11,12 @@ const PokedexReducer = {
      * @param state
      * @param payload
      */
-    setAllPokemons: (state: PokedexState, payload: Pokemon[]): PokedexState => {
+    setAllPokemons: (state: PokedexState, payload: PokemonResponse): PokedexState => {
+        console.log(payload)
         // get id and save in the object for each one of the pokemons
-        const pokemons = payload.map((pokemon) => {
+        const pokemons = payload.results.map((pokemon) => {
             const {name, url} = pokemon
+            //@ts-ignore
             const id = url.replace('https://pokeapi.co/api/v2/pokemon/', '')
             const cleanId = Number(id.substring(0, id.length - 1))
             return {
@@ -67,6 +69,9 @@ const PokedexReducer = {
         }
     },
 
+    setPokemonList: (state: PokedexState, payload: PokemonList) => {
+
+    }
 }
 
 export default PokedexReducer

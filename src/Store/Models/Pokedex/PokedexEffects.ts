@@ -8,9 +8,10 @@ const PokedexEffects = (dispatch) => ({
     async fetchPokemons() {
         dispatch.pokedex.setPokemonsRequestState(RequestState.Loading)
         try {
-            const url = 'https://pokeapi.co/api/v2/pokemon/?limit=100000'
-            const data = await fetch(url)
-            dispatch.pokedex.setAllPokemons(data)
+            const url = 'https://pokeapi.co/api/v2/pokemon/?limit=9999'
+            await fetch(url)
+                .then((response) => response.json())
+                .then((data) => dispatch.pokedex.setAllPokemons(data))
         } catch (e) {
             dispatch.pokedex.setPokemonsRequestState(RequestState.Error)
         }
@@ -23,8 +24,10 @@ const PokedexEffects = (dispatch) => ({
         dispatch.pokedex.setPokemonRequestState(RequestState.Loading)
         try {
             const url = `https://pokeapi.co/api/v2/pokemon/${id}`
+            await fetch(url)
+                .then((response) => response.json())
+                .then((data) => dispatch.pokedex.setPokemon(data))
             const data = await fetch(url)
-            dispatch.pokedex.setPokemon(data)
         } catch (e) {
             dispatch.pokedex.setPokemonRequestState(RequestState.Error)
         }

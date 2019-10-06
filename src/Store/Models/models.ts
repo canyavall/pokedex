@@ -1,22 +1,27 @@
-// Custom components
+import {createModel} from '@rematch/core';
 import MyPokemonState from "./MyPokemon/MyPokemonState";
 import MyPokemonReducer from "./MyPokemon/MyPokemonReducer";
 import PokedexState from "./Pokedex/PokedexState";
 import PokedexReducer from "./Pokedex/PokedexReducer";
 import PokedexEffects from "./Pokedex/PokedexEffects";
 
-const mypokemon = {
+const mypokemonModel = {
     state: MyPokemonState,
     reducers: MyPokemonReducer
 }
 
-const pokedex = {
+const pokedexModel = {
     state: PokedexState,
     reducers: PokedexReducer,
     effects: PokedexEffects
 }
 
-export {
-    mypokemon,
-    pokedex
+const pokedex = createModel(pokedexModel)
+const mypokemon = createModel(mypokemonModel)
+
+const models = {
+    pokedex,
+    mypokemon
 }
+
+export default models

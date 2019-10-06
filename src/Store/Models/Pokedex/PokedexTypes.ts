@@ -133,13 +133,23 @@ export interface Details {
     types: Type2[];
     weight: number;
 }
+
 export interface Pokemons {
     [id: string]: Pokemon;
 }
+
 export interface Pokemon {
     name: string;
+    id: number;
     url: string;
     details?: Details;
+}
+
+export interface PokemonResponse {
+    count: number;
+    next: string;
+    previous: string;
+    results: Pokemons[]
 }
 
 export interface DoubleDamageFrom {
@@ -239,6 +249,14 @@ export interface Type {
     details: TypeDetail;
 }
 
+export type PokedexListCurrentPage = number;
+export type PokedexListElementsToShow = number;
+export type PokedexListOrderBy = OrderPokedexBy
+
+export enum OrderPokedexBy {
+    number = "Number",
+    name = "Name",
+}
 
 export interface PokedexState {
     pokemons: Pokemons,
@@ -247,4 +265,8 @@ export interface PokedexState {
 
     types: Type[],
     typesRequestState: RequestState,
+
+    pokedexListCurrentPage: PokedexListCurrentPage,
+    pokedexListElementsToShow: PokedexListElementsToShow,
+    pokedexListOrderBy: PokedexListOrderBy
 }

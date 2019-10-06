@@ -1,7 +1,4 @@
-/**
- * Initial state for the module Channels
- **/
-import {PokedexState, RequestState} from "./PokedexTypes";
+import {OrderPokedexBy, PokedexState, RequestState} from "./PokedexTypes";
 
 const pokedexInitialState: PokedexState = {
     pokemons: undefined,
@@ -9,8 +6,11 @@ const pokedexInitialState: PokedexState = {
     pokemonRequestState: RequestState.Initial,
 
     types: [],
-    typesRequestState: RequestState.Initial
+    typesRequestState: RequestState.Initial,
 
+    pokedexListCurrentPage: 1,
+    pokedexListElementsToShow: 20,
+    pokedexListOrderBy: OrderPokedexBy.number
 }
 
 export default pokedexInitialState

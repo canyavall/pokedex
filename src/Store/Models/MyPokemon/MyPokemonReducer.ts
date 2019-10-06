@@ -1,5 +1,3 @@
-import myPokemonInitialState from './MyPokemonState';
-// @ts-ignore
 import {MyPokemonState} from './MyPokemonTypes';
 
 /**
