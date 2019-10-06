@@ -10,7 +10,7 @@ const usePokedex = () => {
     const pokedexListCurrentPage= useSelector(select.pokedex.getPokedexListCurrentPage)
     const pokedexListElementsToShow= useSelector(select.pokedex.getPokedexListElementsToShow)
     const pokedexListOrderBy= useSelector(select.pokedex.getPokedexListOrderBy)
-
+    const pokemonsListName = useSelector(select.pokedex.getPokemonsListName)
 
     // Fetch data
     useEffect(() => {
@@ -27,6 +27,7 @@ const usePokedex = () => {
         pokedexListCurrentPage,
         pokedexListElementsToShow,
         pokedexListOrderBy,
+        pokemonsListName,
 
         maxIndex,
         numberOfPages
