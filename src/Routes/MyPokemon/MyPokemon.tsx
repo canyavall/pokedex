@@ -7,7 +7,7 @@ import useMyPokemons from "./MyPokemonHook";
 
 const MyPokemon: React.FC = () => {
     const {pokedexListCurrentPage, pokedexListElementsToShow, maxIndex, numberOfPages} = usePokedex()
-    const {myPokemons, myPokemonsListWithData} = useMyPokemons()
+    const {myPokemonsListWithData} = useMyPokemons()
 
     const paginationProps = {
         prev: true,
@@ -23,6 +23,7 @@ const MyPokemon: React.FC = () => {
         onSelect: store.dispatch.pokedex.setPokedexListCurrentPage,
         style: styles.pagination
     }
+    console.log("RERENDER", myPokemonsListWithData)
 
     return (
         <>

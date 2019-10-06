@@ -4,7 +4,7 @@ import select from "../../Store/selectors";
 import {useSelector} from 'react-redux'
 
 const usePokemonCard = (pokemon) => {
-    const {name, id} = pokemon
+    const {id} = pokemon
 
     const [showPicture, setShowPicture] = useState(true)
     const [showModal, setShowModal] = useState(false)
@@ -15,7 +15,7 @@ const usePokemonCard = (pokemon) => {
     let finalId = id.toString().padStart(3, "000")
     const imageUrl = `https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${finalId}.png`
 
-    const onOpenDetail = async() => {
+    const onOpenDetail = async () => {
         !pokemonDetails && await store.dispatch.pokedex.fetchPokemon(id)
         setShowModal(true)
     }

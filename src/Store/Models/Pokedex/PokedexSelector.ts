@@ -6,7 +6,7 @@ import {
     RequestState
 } from "./PokedexTypes";
 
-// Unmemoized functions for PublicChannels
+// Unmemoized functions for Pokedex
 export const getPokemons = (state: State): Pokemons => state.pokedex.pokemons
 export const getPokemonsRequestState = (state: State): RequestState => state.pokedex.pokemonsRequestState
 export const getPokemonRequestState = (state: State): RequestState => state.pokedex.pokemonRequestState
@@ -15,4 +15,3 @@ export const getPokedexListCurrentPage = (state: State): PokedexListCurrentPage 
 export const getPokedexListElementsToShow = (state: State): PokedexListElementsToShow => state.pokedex.pokedexListElementsToShow
 export const getPokedexListOrderBy = (state: State): PokedexListOrderBy => state.pokedex.pokedexListOrderBy
 
-// Memoized functions for PublicChannels

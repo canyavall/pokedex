@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {Panel} from 'rsuite';
 import {Pokemon} from "../../Store/Models/Pokedex/PokedexTypes";
 import PokemonDetail from "../PokemonDetails/PokemonDetails";
@@ -21,7 +21,8 @@ const PokemonCard: React.FC<PokemonCardProps> = ({pokemon}) => {
                     <h5>{'#' + finalId + ' - ' + name}</h5>
                 </div>
             </Panel>
-            {showModal && <PokemonDetail setShowModal={setShowModal} pokemon={pokemon} pokemonDetails={pokemonDetails}/>}
+            {showModal &&
+            <PokemonDetail setShowModal={setShowModal} pokemon={pokemon} pokemonDetails={pokemonDetails}/>}
         </div>
     );
 }

@@ -15,7 +15,7 @@ const usePokedex = () => {
     // Fetch data
     useEffect(() => {
         !pokemons && store.dispatch.pokedex.fetchPokemons()
-    }, [])
+    }, [pokemons])
 
     // Prepare constants
     const maxIndex = pokedexListCurrentPage * pokedexListElementsToShow

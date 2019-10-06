@@ -20,7 +20,7 @@ const PokemonDetail: React.FC<PokemonCardProps> = (props) => {
                 <h2>{name}</h2>
                 <div style={styles.firstRow}>
                     <div style={styles.logoContainer}>
-                        <img src={imageUrl}/>
+                        <img src={imageUrl} alt={name}/>
                     </div>
                     <div style={styles.dataContainer}>
                         <Panel bordered>

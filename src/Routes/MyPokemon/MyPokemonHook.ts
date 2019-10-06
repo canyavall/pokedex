@@ -4,12 +4,10 @@ import select from "../../Store/selectors";
 const useMyPokemons = () => {
 
     // Get data from reducer
-    const myPokemons = useSelector(select.mypokemon.getMyPokemonList)
     const myPokemonsListWithData = useSelector(select.mypokemon.getMyPokemonListWithData)
-
+    console.log("data returned", myPokemonsListWithData)
 
     return {
-        myPokemons,
         myPokemonsListWithData
     }
 }

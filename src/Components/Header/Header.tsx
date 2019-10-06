@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import {Nav} from 'rsuite';
 import {Link} from "react-router-dom";
 
@@ -6,10 +6,10 @@ const NavLink = props => <Nav.Item componentClass={Link} {...props} />;
 
 export const Header: React.FC = () => {
     return (
-            <Nav appearance="subtle">
-                <NavLink to="/">Home</NavLink>
-                <NavLink to="/mypokemon">My Pokemons</NavLink>
-            </Nav>
+        <Nav appearance="subtle">
+            <NavLink to="/">Home</NavLink>
+            <NavLink to="/mypokemon">My Pokemons</NavLink>
+        </Nav>
     );
 }
 
