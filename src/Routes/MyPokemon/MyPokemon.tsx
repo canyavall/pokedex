@@ -2,12 +2,10 @@ import React from 'react';
 import store from "../../Store/store";
 import {Loader, Pagination, Panel} from "rsuite";
 import PokemonCard from "../../Components/PokemonCard/PokemonCard";
-import usePokedex from "../Pokedex/PokedexHook";
 import useMyPokemons from "./MyPokemonHook";
 
 const MyPokemon: React.FC = () => {
-    const {pokedexListCurrentPage, pokedexListElementsToShow, maxIndex, numberOfPages} = usePokedex()
-    const {myPokemonsListWithData} = useMyPokemons()
+    const {myPokemonsListWithData, numberOfPages, myPokemonListElementsToShow, myPokemonListCurrentPage, maxIndex} = useMyPokemons()
 
     const paginationProps = {
         prev: true,
@@ -19,11 +17,10 @@ const MyPokemon: React.FC = () => {
         size: "lg",
         maxButtons: 10,
         pages: numberOfPages,
-        activePage: pokedexListCurrentPage,
-        onSelect: store.dispatch.pokedex.setPokedexListCurrentPage,
+        activePage: myPokemonListCurrentPage,
+        onSelect: store.dispatch.mypokemon.setMyPokemonListCurrentPage,
         style: styles.pagination
     }
-    console.log("RERENDER", myPokemonsListWithData)
 
     return (
         <>
@@ -31,7 +28,8 @@ const MyPokemon: React.FC = () => {
                 <div style={styles.gridContainer}>
                     {!myPokemonsListWithData && <Loader size="lg" content="Large"/>}
                     {myPokemonsListWithData && Object.keys(myPokemonsListWithData).map((pokemon, index) => {
-                        if (index >= maxIndex - pokedexListElementsToShow && index < maxIndex) {
+                        console.log(index, maxIndex, myPokemonListElementsToShow)
+                        if (index >= maxIndex - myPokemonListElementsToShow && index < maxIndex) {
                             return <PokemonCard key={index} pokemon={myPokemonsListWithData[pokemon]}/>
                         }
                         return null

@@ -7,7 +7,6 @@ export interface UsePokemonDetails {
 
 }
 
-
 const usePokemonDetails = ({pokemon, pokemonDetails, setShowModal}) => {
     const {name, id} = pokemon
 

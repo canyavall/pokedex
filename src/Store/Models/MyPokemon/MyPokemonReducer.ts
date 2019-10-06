@@ -1,4 +1,5 @@
 import {MyPokemonState} from './MyPokemonTypes';
+import {OrderPokedexBy, PokedexState} from "../Pokedex/PokedexTypes";
 
 /**
  * Channels Reducer
@@ -30,6 +31,42 @@ const MyPokemonReducer = {
             myPokemonList: newMyPokemonList
         }
     },
+
+    /**
+     * Change current page for pagination
+     * @param state
+     * @param payload
+     */
+    setMyPokemonListCurrentPage: (state: PokedexState, payload: number): PokedexState => {
+        return {
+            ...state,
+            pokedexListCurrentPage: payload
+        }
+    },
+
+    /**
+     * Change number of elements to show in pokedex list
+     * @param state
+     * @param payload
+     */
+    setMyPokemonListElementsToShow: (state: PokedexState, payload: number): PokedexState => {
+        return {
+            ...state,
+            pokedexListElementsToShow: payload
+        }
+    },
+
+    /**
+     * Change the order of the Pokemons in the Pokedex list
+     * @param state
+     * @param payload
+     */
+    setMyPokemonListOrderBy: (state: PokedexState, payload: OrderPokedexBy): PokedexState => {
+        return {
+            ...state,
+            pokedexListOrderBy: payload
+        }
+    }
 }
 
 export default MyPokemonReducer
