@@ -1,7 +1,8 @@
 import React from 'react';
-import {Button, Modal, Panel} from 'rsuite';
+import {Button, Col, Modal, Panel, Row, Progress} from 'rsuite';
 import {Details, Pokemon} from "../../Store/Models/Pokedex/PokedexTypes";
 import usePokemonDetails from "./PokemonDetailsHook";
+const { Line } = Progress;
 
 export interface PokemonCardProps {
     pokemon: Pokemon,
@@ -10,7 +11,6 @@ export interface PokemonCardProps {
 }
 
 const PokemonDetail: React.FC<PokemonCardProps> = (props) => {
-
     const {
         name,
         imageUrl,
@@ -29,11 +29,11 @@ const PokemonDetail: React.FC<PokemonCardProps> = (props) => {
         <Modal show={true}>
             <Modal.Body>
                 <h2>{name}</h2>
-                <div style={styles.firstRow}>
-                    <div style={styles.logoContainer}>
+                <Row style={styles.firstRow}>
+                    <Col md={12} style={styles.logoContainer}>
                         <img src={imageUrl} alt={name}/>
-                    </div>
-                    <div style={styles.dataContainer}>
+                    </Col>
+                    <Col md={12} style={styles.dataContainer}>
                         <Panel bordered>
                             <p>National N°: {finalId}</p>
                             <p>Type: </p>
@@ -41,12 +41,20 @@ const PokemonDetail: React.FC<PokemonCardProps> = (props) => {
                             <p>Weight: {weight}</p>
                             <p>Abilities: {abilities}</p>
                         </Panel>
-                    </div>
-                </div>
+                    </Col>
+                </Row>
                 <div>
                     <Panel bordered>
-                        <p>HP: {stats.hp}</p>
-                        <p>Attack: {stats.hp}</p>
+                        <Row>
+                            <Col md={3}>HP: </Col>
+                            <Col md={19}><Line percent={30} strokeColor="#ffc107" /> </Col>
+                            <Col md={2}>{stats.hp}</Col>
+                        </Row>
+                        <Row>
+                            <Col md={3}>Attack: </Col>
+                            <Col md={19}><Line percent={30} strokeColor="#ffc107" /></Col>
+                            <Col md={2}>{stats.attack}</Col>
+                        </Row>
                         <p>Defense: {stats.def}</p>
                         <p>Sp. Atk: {stats.spat}</p>
                         <p>Sp. Def: {stats.spdef}</p>
