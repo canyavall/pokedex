@@ -16,7 +16,7 @@ const App: React.FC = () => {
 
 const styles = {
     container: {
-        width: '60%',
+        width: '72%',
         margin: '0 auto'
     } as React.CSSProperties
 }

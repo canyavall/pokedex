@@ -38,7 +38,6 @@ const usePokemonDetails = ({pokemon, pokemonDetails, setShowModal}) => {
     // Checks if this pokemon id is already in mypokemons list
     const isInMyPokemons = myPokemonList.includes(id)
 
-
     return {
         id,
         name,

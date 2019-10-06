@@ -5,11 +5,13 @@ import {useSelector} from 'react-redux'
 
 const usePokemonCard = (pokemon) => {
     const {id} = pokemon
+    const [isHover, setIsHover] = useState(false)
 
     const [showPicture, setShowPicture] = useState(true)
     const [showModal, setShowModal] = useState(false)
 
     const pokemons = useSelector(select.pokedex.getPokemons)
+    const myPokemonList = useSelector(select.mypokemon.getMyPokemonList)
     const pokemonDetails = pokemons && pokemons[id] && pokemons[id].details
 
     let finalId = id.toString().padStart(3, "000")
@@ -20,7 +22,12 @@ const usePokemonCard = (pokemon) => {
         setShowModal(true)
     }
 
+    const isInMyPokemons = myPokemonList.includes(id)
+
     return {
+        isHover,
+        setIsHover,
+
         showPicture,
         setShowPicture,
 
@@ -32,7 +39,8 @@ const usePokemonCard = (pokemon) => {
 
         onOpenDetail,
 
-        pokemonDetails
+        pokemonDetails,
+        isInMyPokemons
     }
 }
 

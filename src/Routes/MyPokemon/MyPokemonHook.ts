@@ -14,7 +14,7 @@ const useMyPokemons = () => {
     const maxIndex = myPokemonListCurrentPage * myPokemonListElementsToShow
     const numberOfPokemons = (myPokemonsList && myPokemonsList.length) || myPokemonListElementsToShow
     const numberOfPages = Math.ceil((numberOfPokemons / myPokemonListElementsToShow))
-    
+
     return {
         myPokemonsListWithData,
         myPokemonListCurrentPage,

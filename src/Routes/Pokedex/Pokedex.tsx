@@ -1,5 +1,5 @@
 import React from 'react';
-import {Loader, Pagination, Panel} from 'rsuite';
+import {Dropdown, Loader, Pagination, Panel, Row, Col, Input} from 'rsuite';
 import usePokedex from "./PokedexHook";
 import PokemonCard from "../../Components/PokemonCard/PokemonCard";
 import store from "../../Store/store";
@@ -24,19 +24,40 @@ const Pokedex: React.FC = () => {
 
     return (
         <>
-            <Panel style={styles.panelStyle} bordered>
-                <div style={styles.gridContainer}>
-                    {!pokemons && <Loader size="lg" content="Large"/>}
-                    {pokemons && Object.keys(pokemons).map((pokemon, index) => {
-                        if (index >= maxIndex - pokedexListElementsToShow && index < maxIndex) {
-                            return <PokemonCard key={index} pokemon={pokemons[pokemon]}/>
-                        }
-                        return null
-                    })}
+            <Row style={{paddingTop: 10}}>
+                <Col md={20}>
+                    <Panel style={styles.panelStyle} bordered>
+                        <div style={styles.gridContainer}>
+                            {!pokemons && <Loader size="lg" content="Large"/>}
+                            {pokemons && Object.keys(pokemons).map((pokemon, index) => {
+                                if (index >= maxIndex - pokedexListElementsToShow && index < maxIndex) {
+                                    return <PokemonCard key={index} pokemon={pokemons[pokemon]}/>
+                                }
+                                return null
+                            })}
 
-                </div>
-            </Panel>
-            <Pagination {...paginationProps}/>
+                        </div>
+                    </Panel>
+                    <Pagination {...paginationProps}/>
+                </Col>
+                <Col md={4}>
+                    <Input style={{ width: '100%' }} placeholder="Search" />
+                    <Dropdown title="Order list by" trigger="hover" placement="rightStart">
+                        <Dropdown.Item>Number Asc</Dropdown.Item>
+                        <Dropdown.Item>Number Desc</Dropdown.Item>
+                        <Dropdown.Item>Name Asc</Dropdown.Item>
+                        <Dropdown.Item>Name Desc</Dropdown.Item>
+                    </Dropdown>
+                    <Dropdown title="Show list as" trigger="hover" placement="rightStart">
+                        <Dropdown.Item>Grid</Dropdown.Item>
+                        <Dropdown.Item>List</Dropdown.Item>
+                    </Dropdown>
+                    <Dropdown title="Filter list by type" trigger="hover" placement="rightStart">
+                        <Dropdown.Item>Water</Dropdown.Item>
+                        <Dropdown.Item>Plant</Dropdown.Item>
+                    </Dropdown>
+                </Col>
+            </Row>
         </>
     );
 }
@@ -48,12 +69,13 @@ const styles = {
         flexWrap: 'wrap'
     } as React.CSSProperties,
     panelStyle: {
-        paddingLeft: 10
+        paddingLeft: 20
     } as React.CSSProperties,
     pagination: {
         display: 'flex',
         justifyContent: 'flex-end'
-    } as React.CSSProperties
+    } as React.CSSProperties,
+    orderBy: {}
 }
 
 export default Pokedex;
