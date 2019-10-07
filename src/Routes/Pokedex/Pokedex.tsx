@@ -1,5 +1,5 @@
 import React from 'react';
-import {Dropdown, Loader, Pagination, Panel, Row, Col, Input, AutoComplete} from 'rsuite';
+import {AutoComplete, Col, Dropdown, Loader, Pagination, Panel, Row} from 'rsuite';
 import usePokedex from "./PokedexHook";
 import PokemonCard from "../../Components/PokemonCard/PokemonCard";
 import store from "../../Store/store";
@@ -44,7 +44,8 @@ const Pokedex: React.FC = () => {
                     <AutoComplete placeholder="Search" data={pokemonsListName} onKeyDown={(e) => {
                         if (e.key === 'Enter') {
                             console.log('do validate');
-                        }                    }}/>
+                        }
+                    }}/>
                     <Dropdown title="Order list by" trigger="hover" placement="rightStart">
                         <Dropdown.Item>Number Asc</Dropdown.Item>
                         <Dropdown.Item>Number Desc</Dropdown.Item>

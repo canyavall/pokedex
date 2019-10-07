@@ -1,9 +1,8 @@
 import React from 'react';
-import {Button, Col, Modal, Panel, Row, Progress} from 'rsuite';
+import {Button, Col, Modal, Panel, Row} from 'rsuite';
 import {Details, Pokemon} from "../../Store/Models/Pokedex/PokedexTypes";
 import usePokemonDetails from "./PokemonDetailsHook";
 import StatsBox from "../StatsBox/StatsBox";
-const { Line } = Progress;
 
 export interface PokemonCardProps {
     pokemon: Pokemon,

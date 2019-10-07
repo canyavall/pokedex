@@ -28,7 +28,7 @@ const PokedexReducer = {
                 })
             }
         })
-console.log(pokemons)
+
         return {
             ...state,
             pokemons: keyBy(pokemons, 'id'),

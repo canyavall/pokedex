@@ -8,7 +8,6 @@ const useMyPokemons = () => {
     const myPokemonsListWithData = useSelector(select.mypokemon.getMyPokemonListWithData)
     const myPokemonListCurrentPage = useSelector(select.mypokemon.getMyPokemonListCurrentPage)
     const myPokemonListElementsToShow = useSelector(select.mypokemon.getMyPokemonListElementsToShow)
-    const myPokemonListOrderBy = useSelector(select.mypokemon.getMyPokemonListOrderBy)
 
     // Prepare constants
     const maxIndex = myPokemonListCurrentPage * myPokemonListElementsToShow
