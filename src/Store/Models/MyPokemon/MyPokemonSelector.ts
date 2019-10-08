@@ -11,7 +11,12 @@ export const getMyPokemonListOrderBy = (state: State): PokedexListOrderBy => sta
 export const getMyPokemonListWithData = (state: State) => {
     let myPokemons = {}
     state.mypokemon.myPokemonList.forEach((id) => {
-        myPokemons[id] = state.pokedex.pokemons[id]
+        myPokemons[id] = state.pokedex.pokemons.find((pokemon) => {
+            if (pokemon.id === id){
+                return pokemon
+            }
+            return false
+        })
     })
 
     return myPokemons

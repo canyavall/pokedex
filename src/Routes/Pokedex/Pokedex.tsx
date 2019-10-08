@@ -1,5 +1,5 @@
 import React from 'react';
-import {Input, Col, Dropdown, Loader, Pagination, Panel, Row} from 'rsuite';
+import {Input, Col, Loader, Pagination, Panel, Row} from 'rsuite';
 import usePokedex from "./PokedexHook";
 import PokemonCard from "../../Components/PokemonCard/PokemonCard";
 import store from "../../Store/store";
@@ -42,20 +42,20 @@ const Pokedex: React.FC = () => {
                 </Col>
                 <Col md={4}>
                     <Input placeholder="Search" onChange={(value) => setSearch(value)} />
-                    <Dropdown title="Order list by" trigger="hover" placement="rightStart">
-                        <Dropdown.Item>Number Asc</Dropdown.Item>
-                        <Dropdown.Item>Number Desc</Dropdown.Item>
-                        <Dropdown.Item>Name Asc</Dropdown.Item>
-                        <Dropdown.Item>Name Desc</Dropdown.Item>
-                    </Dropdown>
-                    <Dropdown title="Show list as" trigger="hover" placement="rightStart">
-                        <Dropdown.Item>Grid</Dropdown.Item>
-                        <Dropdown.Item>List</Dropdown.Item>
-                    </Dropdown>
-                    <Dropdown title="Filter list by type" trigger="hover" placement="rightStart">
-                        <Dropdown.Item>Water</Dropdown.Item>
-                        <Dropdown.Item>Plant</Dropdown.Item>
-                    </Dropdown>
+                    {/*<Dropdown title="Order list by" trigger="hover" placement="rightStart">*/}
+                    {/*    <Dropdown.Item>Number Asc</Dropdown.Item>*/}
+                    {/*    <Dropdown.Item>Number Desc</Dropdown.Item>*/}
+                    {/*    <Dropdown.Item>Name Asc</Dropdown.Item>*/}
+                    {/*    <Dropdown.Item>Name Desc</Dropdown.Item>*/}
+                    {/*</Dropdown>*/}
+                    {/*<Dropdown title="Show list as" trigger="hover" placement="rightStart">*/}
+                    {/*    <Dropdown.Item>Grid</Dropdown.Item>*/}
+                    {/*    <Dropdown.Item>List</Dropdown.Item>*/}
+                    {/*</Dropdown>*/}
+                    {/*<Dropdown title="Filter list by type" trigger="hover" placement="rightStart">*/}
+                    {/*    <Dropdown.Item>Water</Dropdown.Item>*/}
+                    {/*    <Dropdown.Item>Plant</Dropdown.Item>*/}
+                    {/*</Dropdown>*/}
                 </Col>
             </Row>
         </>

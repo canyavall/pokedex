@@ -28,7 +28,6 @@ const MyPokemon: React.FC = () => {
                 <div style={styles.gridContainer}>
                     {!myPokemonsListWithData && <Loader size="lg" content="Large"/>}
                     {myPokemonsListWithData && Object.keys(myPokemonsListWithData).map((pokemon, index) => {
-                        console.log(index, maxIndex, myPokemonListElementsToShow)
                         if (index >= maxIndex - myPokemonListElementsToShow && index < maxIndex) {
                             return <PokemonCard key={index} pokemon={myPokemonsListWithData[pokemon]}/>
                         }

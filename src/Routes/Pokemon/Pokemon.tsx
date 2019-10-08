@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Pokemon: React.FC = (props) => {
-    console.log(props)
+
     return (
         <div className="App">
             <header className="App-header">
