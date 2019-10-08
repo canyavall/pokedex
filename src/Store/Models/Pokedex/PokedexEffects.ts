@@ -9,7 +9,6 @@ const PokedexEffects = (dispatch) => ({
     async fetchPokemons() {
         dispatch.pokedex.setPokemonsRequestState(RequestState.Loading)
         try {
-            console.log(store.getState().pokedex.pokemons.length)
             // Let's check if we have the data, and, if it is the case, don't reload it
             if (store.getState().pokedex.pokemons.length === 0) {
                 const url = 'https://pokeapi.co/api/v2/pokemon/?limit=9999'
