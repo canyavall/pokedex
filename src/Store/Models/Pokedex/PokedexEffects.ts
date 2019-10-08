@@ -1,4 +1,5 @@
 import {RequestState} from "./PokedexTypes";
+import store from "../../store";
 
 const PokedexEffects = (dispatch) => ({
 
@@ -8,10 +9,14 @@ const PokedexEffects = (dispatch) => ({
     async fetchPokemons() {
         dispatch.pokedex.setPokemonsRequestState(RequestState.Loading)
         try {
-            const url = 'https://pokeapi.co/api/v2/pokemon/?limit=9999'
-            await fetch(url)
-                .then((response) => response.json())
-                .then((data) => dispatch.pokedex.setAllPokemons(data))
+            console.log(store.getState().pokedex.pokemons.length)
+            // Let's check if we have the data, and, if it is the case, don't reload it
+            if (store.getState().pokedex.pokemons.length === 0) {
+                const url = 'https://pokeapi.co/api/v2/pokemon/?limit=9999'
+                await fetch(url)
+                    .then((response) => response.json())
+                    .then((data) => dispatch.pokedex.setAllPokemons(data))
+            }
         } catch (e) {
             dispatch.pokedex.setPokemonsRequestState(RequestState.Error)
         }

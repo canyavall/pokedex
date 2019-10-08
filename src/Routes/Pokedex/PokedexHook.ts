@@ -26,7 +26,7 @@ const usePokedex = (): UsePokedex => {
 
     // Fetch data
     useEffect(() => {
-        !pokemons && store.dispatch.pokedex.fetchPokemons()
+        store.dispatch.pokedex.fetchPokemons()
     }, [pokemons])
 
     if (search && search.length > 0) {

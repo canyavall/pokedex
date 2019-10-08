@@ -1,5 +1,5 @@
 import React from 'react';
-import {Input, Col, Loader, Pagination, Panel, Row} from 'rsuite';
+import {Col, Input, Loader, Pagination, Panel, Row} from 'rsuite';
 import usePokedex from "./PokedexHook";
 import PokemonCard from "../../Components/PokemonCard/PokemonCard";
 import store from "../../Store/store";
@@ -28,8 +28,8 @@ const Pokedex: React.FC = () => {
                 <Col md={20}>
                     <Panel style={styles.panelStyle} bordered>
                         <div style={styles.gridContainer}>
-                            {!pokemons && <Loader size="lg" content="Large"/>}
-                            {pokemons && Object.keys(pokemons).map((pokemon, index) => {
+                            {pokemons.length === 0 && <Loader size="lg"/>}
+                            {pokemons.length > 0 && Object.keys(pokemons).map((pokemon, index) => {
                                 if (index >= maxIndex - pokedexListElementsToShow && index < maxIndex) {
                                     return <PokemonCard key={index} pokemon={pokemons[pokemon]}/>
                                 }
@@ -41,21 +41,7 @@ const Pokedex: React.FC = () => {
                     <Pagination {...paginationProps}/>
                 </Col>
                 <Col md={4}>
-                    <Input placeholder="Search" onChange={(value) => setSearch(value)} />
-                    {/*<Dropdown title="Order list by" trigger="hover" placement="rightStart">*/}
-                    {/*    <Dropdown.Item>Number Asc</Dropdown.Item>*/}
-                    {/*    <Dropdown.Item>Number Desc</Dropdown.Item>*/}
-                    {/*    <Dropdown.Item>Name Asc</Dropdown.Item>*/}
-                    {/*    <Dropdown.Item>Name Desc</Dropdown.Item>*/}
-                    {/*</Dropdown>*/}
-                    {/*<Dropdown title="Show list as" trigger="hover" placement="rightStart">*/}
-                    {/*    <Dropdown.Item>Grid</Dropdown.Item>*/}
-                    {/*    <Dropdown.Item>List</Dropdown.Item>*/}
-                    {/*</Dropdown>*/}
-                    {/*<Dropdown title="Filter list by type" trigger="hover" placement="rightStart">*/}
-                    {/*    <Dropdown.Item>Water</Dropdown.Item>*/}
-                    {/*    <Dropdown.Item>Plant</Dropdown.Item>*/}
-                    {/*</Dropdown>*/}
+                    <Input placeholder="Search" onChange={(value) => setSearch(value)}/>
                 </Col>
             </Row>
         </>
@@ -66,10 +52,12 @@ const styles = {
     gridContainer: {
         display: 'flex',
         width: "100%",
-        flexWrap: 'wrap'
+        flexWrap: 'wrap',
+        alignItems: 'center',
+        justifyContent: 'center'
     } as React.CSSProperties,
     panelStyle: {
-        paddingLeft: 20
+        paddingLeft: 10
     } as React.CSSProperties,
     pagination: {
         display: 'flex',

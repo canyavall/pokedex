@@ -5,7 +5,12 @@ import PokemonCard from "../../Components/PokemonCard/PokemonCard";
 import useMyPokemons from "./MyPokemonHook";
 
 const MyPokemon: React.FC = () => {
-    const {myPokemonsListWithData, numberOfPages, myPokemonListElementsToShow, myPokemonListCurrentPage, maxIndex} = useMyPokemons()
+    const {myPokemonsListWithData,
+        numberOfPages,
+        myPokemonListElementsToShow,
+        myPokemonListCurrentPage,
+        maxIndex,
+        pokemons} = useMyPokemons()
 
     const paginationProps = {
         prev: true,
@@ -26,8 +31,8 @@ const MyPokemon: React.FC = () => {
         <>
             <Panel style={styles.panelStyle} bordered>
                 <div style={styles.gridContainer}>
-                    {!myPokemonsListWithData && <Loader size="lg" content="Large"/>}
-                    {myPokemonsListWithData && Object.keys(myPokemonsListWithData).map((pokemon, index) => {
+                    {(!myPokemonsListWithData || pokemons.length===0) && <Loader size="lg" content="Large"/>}
+                    {myPokemonsListWithData && pokemons.length > 0 && Object.keys(myPokemonsListWithData).map((pokemon, index) => {
                         if (index >= maxIndex - myPokemonListElementsToShow && index < maxIndex) {
                             return <PokemonCard key={index} pokemon={myPokemonsListWithData[pokemon]}/>
                         }

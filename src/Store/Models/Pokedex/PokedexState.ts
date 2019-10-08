@@ -1,7 +1,7 @@
 import {OrderPokedexBy, PokedexState, RequestState} from "./PokedexTypes";
 
 const pokedexInitialState: PokedexState = {
-    pokemons: undefined,
+    pokemons: [],
     pokemonsRequestState: RequestState.Initial,
     pokemonRequestState: RequestState.Initial,
 
