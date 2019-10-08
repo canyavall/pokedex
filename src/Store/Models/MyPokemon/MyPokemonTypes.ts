@@ -1,7 +1,7 @@
 import {OrderPokedexBy} from "../Pokedex/PokedexTypes";
 
 export interface MyPokemonState {
-    myPokemonList: string[];
+    myPokemonList: number[];
     myPokemonListCurrentPage: number;
     myPokemonListElementsToShow: number;
     myPokemonListOrderBy: OrderPokedexBy

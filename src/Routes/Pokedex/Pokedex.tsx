@@ -5,7 +5,7 @@ import PokemonCard from "../../Components/PokemonCard/PokemonCard";
 import store from "../../Store/store";
 
 const Pokedex: React.FC = () => {
-    const {pokemons, pokedexListCurrentPage, pokedexListElementsToShow, maxIndex, numberOfPages, search, setSearch} = usePokedex()
+    const {pokemons, pokedexListCurrentPage, pokedexListElementsToShow, maxIndex, numberOfPages, setSearch} = usePokedex()
 
     const paginationProps = {
         prev: true,

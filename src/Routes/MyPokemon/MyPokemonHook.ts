@@ -1,7 +1,17 @@
 import {useSelector} from 'react-redux'
 import select from "../../Store/selectors";
 
-const useMyPokemons = () => {
+export interface UseMyPokemons {
+    myPokemonsListWithData: number[],
+    myPokemonListCurrentPage: number,
+    myPokemonListElementsToShow: number,
+
+    numberOfPokemons: number,
+    numberOfPages: number,
+    maxIndex: number,
+}
+
+const useMyPokemons = (): UseMyPokemons => {
 
     // Get data from reducer
     const myPokemonsList = useSelector(select.mypokemon.getMyPokemonList)

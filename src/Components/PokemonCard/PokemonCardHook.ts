@@ -2,6 +2,26 @@ import {useState} from "react";
 import store from "../../Store/store";
 import select from "../../Store/selectors";
 import {useSelector} from 'react-redux'
+import {Details} from "../../Store/Models/Pokedex/PokedexTypes";
+
+export interface UsePokemonCard {
+    isHover: boolean;
+    setIsHover: Function;
+
+    showPicture: boolean;
+    setShowPicture: Function;
+
+    showModal: boolean;
+    setShowModal: Function;
+
+    imageUrl: string;
+    finalId: string;
+
+    onOpenDetail: Function;
+
+    pokemonDetails: Details;
+    isInMyPokemons: boolean;
+}
 
 const usePokemonCard = (pokemon) => {
     const {id} = pokemon

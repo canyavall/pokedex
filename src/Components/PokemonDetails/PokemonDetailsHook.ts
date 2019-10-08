@@ -1,13 +1,36 @@
 import store from "../../Store/store";
-import {extractAbilitiesFromData, extractStatsFromData, extractTypesFromData} from "../../Utils/utils";
+import {extractAbilitiesFromData, extractStatsFromData, extractTypesFromData, Stats} from "../../Utils/utils";
 import select from "../../Store/selectors";
 import {useSelector} from 'react-redux'
+import {Details, Pokemon} from "../../Store/Models/Pokedex/PokedexTypes";
+import {SyntheticEvent} from "react";
 
 export interface UsePokemonDetails {
+    id: number;
+    name: string;
+    finalId: string;
+    imageUrl: string;
 
+    abilities: string[];
+    height: string;
+    weight: string;
+    stats: Stats;
+    types: string[];
+
+    addPokemon: (event: SyntheticEvent<Element, Event>) => void;
+    removePokemon: (event: SyntheticEvent<Element, Event>) => void;
+    closeModal: (event: SyntheticEvent<Element, Event>) => void;
+
+    isInMyPokemons: boolean;
 }
 
-const usePokemonDetails = ({pokemon, pokemonDetails, setShowModal}) => {
+export interface UsePokemonDetailsProps {
+    pokemon: Pokemon;
+    pokemonDetails: Details;
+    setShowModal: Function;
+}
+
+const usePokemonDetails = ({pokemon, pokemonDetails, setShowModal}: UsePokemonDetailsProps): UsePokemonDetails => {
     const {name, id} = pokemon
 
     const myPokemonList = useSelector(select.mypokemon.getMyPokemonList)

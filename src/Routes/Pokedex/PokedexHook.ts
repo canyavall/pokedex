@@ -36,6 +36,7 @@ const usePokedex = (): UsePokedex => {
             if (checkInName || checkInId) {
                 return pokemon
             }
+            return false
         })
     }
 

@@ -10,7 +10,7 @@ const MyPokemonReducer = {
      * @param state
      * @param payload
      */
-    addPokemon: (state: MyPokemonState, payload: string): MyPokemonState => {
+    addPokemon: (state: MyPokemonState, payload: number): MyPokemonState => {
         const newMyPokemonList = state.myPokemonList
         newMyPokemonList.push(payload)
         return {
@@ -24,7 +24,7 @@ const MyPokemonReducer = {
      * @param state
      * @param payload
      */
-    removePokemon: (state: MyPokemonState, payload: string): MyPokemonState => {
+    removePokemon: (state: MyPokemonState, payload: number): MyPokemonState => {
         const newMyPokemonList = state.myPokemonList.filter((id) => id !== payload)
         return {
             ...state,
