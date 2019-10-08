@@ -1,13 +1,14 @@
 import {State} from "../../store";
 import {
     PokedexListCurrentPage,
-    PokedexListElementsToShow, PokedexListOrderBy,
-    Pokemons,
+    PokedexListElementsToShow,
+    PokedexListOrderBy,
+    Pokemon,
     RequestState
 } from "./PokedexTypes";
 
 // Unmemoized functions for Pokedex
-export const getPokemons = (state: State): Pokemons => state.pokedex.pokemons
+export const getPokemons = (state: State): Pokemon[] => state.pokedex.pokemons
 export const getPokemonsRequestState = (state: State): RequestState => state.pokedex.pokemonsRequestState
 export const getPokemonRequestState = (state: State): RequestState => state.pokedex.pokemonRequestState
 

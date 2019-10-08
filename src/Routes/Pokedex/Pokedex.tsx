@@ -1,11 +1,11 @@
 import React from 'react';
-import {AutoComplete, Col, Dropdown, Loader, Pagination, Panel, Row} from 'rsuite';
+import {Input, Col, Dropdown, Loader, Pagination, Panel, Row} from 'rsuite';
 import usePokedex from "./PokedexHook";
 import PokemonCard from "../../Components/PokemonCard/PokemonCard";
 import store from "../../Store/store";
 
 const Pokedex: React.FC = () => {
-    const {pokemonsListName, pokemons, pokedexListCurrentPage, pokedexListElementsToShow, maxIndex, numberOfPages} = usePokedex()
+    const {pokemons, pokedexListCurrentPage, pokedexListElementsToShow, maxIndex, numberOfPages, search, setSearch} = usePokedex()
 
     const paginationProps = {
         prev: true,
@@ -21,7 +21,7 @@ const Pokedex: React.FC = () => {
         onSelect: store.dispatch.pokedex.setPokedexListCurrentPage,
         style: styles.pagination
     }
-
+console.log(pokemons)
     return (
         <>
             <Row style={{paddingTop: 10}}>
@@ -41,11 +41,7 @@ const Pokedex: React.FC = () => {
                     <Pagination {...paginationProps}/>
                 </Col>
                 <Col md={4}>
-                    <AutoComplete placeholder="Search" data={pokemonsListName} onKeyDown={(e) => {
-                        if (e.key === 'Enter') {
-                            console.log('do validate');
-                        }
-                    }}/>
+                    <Input placeholder="Search" onChange={(value) => setSearch(value)} />
                     <Dropdown title="Order list by" trigger="hover" placement="rightStart">
                         <Dropdown.Item>Number Asc</Dropdown.Item>
                         <Dropdown.Item>Number Desc</Dropdown.Item>

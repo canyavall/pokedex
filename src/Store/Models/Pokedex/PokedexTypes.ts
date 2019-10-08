@@ -134,10 +134,6 @@ export interface Details {
     weight: number;
 }
 
-export interface Pokemons {
-    [id: string]: Pokemon;
-}
-
 export interface Pokemon {
     name: string;
     id: number;
@@ -149,7 +145,7 @@ export interface PokemonResponse {
     count: number;
     next: string;
     previous: string;
-    results: Pokemons[]
+    results: Pokemon[]
 }
 
 export interface DoubleDamageFrom {
@@ -259,7 +255,7 @@ export enum OrderPokedexBy {
 }
 
 export interface PokedexState {
-    pokemons: Pokemons,
+    pokemons: Pokemon[],
     pokemonsRequestState: RequestState,
     pokemonRequestState: RequestState,
 

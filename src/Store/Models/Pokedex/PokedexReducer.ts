@@ -1,6 +1,5 @@
 // @ts-ignore
 import {Details, OrderPokedexBy, PokedexState, PokemonResponse, RequestState} from "./PokedexTypes"
-import {keyBy} from 'lodash'
 
 /**
  * Channels Reducer
@@ -31,7 +30,7 @@ const PokedexReducer = {
 
         return {
             ...state,
-            pokemons: keyBy(pokemons, 'id'),
+            pokemons: pokemons,
             pokemonsRequestState: RequestState.Loaded
         }
     },
