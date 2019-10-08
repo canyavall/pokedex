@@ -21,7 +21,7 @@ const Pokedex: React.FC = () => {
         onSelect: store.dispatch.pokedex.setPokedexListCurrentPage,
         style: styles.pagination
     }
-console.log(pokemons)
+
     return (
         <>
             <Row style={{paddingTop: 10}}>

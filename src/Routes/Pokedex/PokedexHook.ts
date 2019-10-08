@@ -29,19 +29,21 @@ const usePokedex = (): UsePokedex => {
         !pokemons && store.dispatch.pokedex.fetchPokemons()
     }, [pokemons])
 
+    if (search && search.length > 0) {
+        pokemons = pokemons.filter((pokemon) => {
+            const checkInName = pokemon.name.toLowerCase().indexOf(search.toLowerCase()) > -1
+            const checkInId = pokemon.id.toString().padStart(3, "000").toLowerCase().indexOf(search.toLowerCase()) > -1
+            if (checkInName || checkInId) {
+                return pokemon
+            }
+        })
+    }
+
     // Prepare constants
     const maxIndex = pokedexListCurrentPage * pokedexListElementsToShow
     const numberOfPokemons = (pokemons && Object.keys(pokemons).length) || pokedexListElementsToShow
     const numberOfPages = Math.floor(numberOfPokemons / pokedexListElementsToShow)
 
-    if (search && search.length > 2) {
-        pokemons = pokemons.filter((pokemon) => {
-            if (pokemon.name.toLowerCase().indexOf(search.toLowerCase()) > -1) {
-                return pokemon
-            }
-        })
-    }
-    console.log(search)
     return {
         pokemons,
         pokedexListCurrentPage,
