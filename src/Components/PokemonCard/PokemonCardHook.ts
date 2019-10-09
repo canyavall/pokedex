@@ -2,7 +2,7 @@ import {useState} from "react";
 import store from "../../Store/store";
 import select from "../../Store/selectors";
 import {useSelector} from 'react-redux'
-import {Details} from "../../Store/Models/Pokedex/PokedexTypes";
+import {Details, Pokemon} from "../../Store/Models/Pokedex/PokedexTypes";
 
 export interface UsePokemonCard {
     isHover: boolean;
@@ -17,13 +17,13 @@ export interface UsePokemonCard {
     imageUrl: string;
     finalId: string;
 
-    onOpenDetail: Function;
+    onOpenDetail: (event) => void;
 
     pokemonDetails: Details;
     isInMyPokemons: boolean;
 }
 
-const usePokemonCard = (pokemon) => {
+const usePokemonCard = (pokemon: Pokemon): UsePokemonCard => {
     const {id} = pokemon
     const [isHover, setIsHover] = useState(false)
 
