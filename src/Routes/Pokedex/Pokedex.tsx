@@ -5,7 +5,7 @@ import PokemonCard from "../../Components/PokemonCard/PokemonCard";
 import store from "../../Store/store";
 
 const Pokedex: React.FC = () => {
-    const {pokemons, pokedexListCurrentPage, pokedexListElementsToShow, maxIndex, numberOfPages, setSearch} = usePokedex()
+    const {pokemons, pokedexListCurrentPage, pokedexListElementsToShow, maxIndex, numberOfPages, search, setSearch} = usePokedex()
 
     const paginationProps = {
         prev: true,
@@ -28,14 +28,19 @@ const Pokedex: React.FC = () => {
                 <Col md={20}>
                     <Panel style={styles.panelStyle} bordered>
                         <div style={styles.gridContainer}>
-                            {pokemons.length === 0 && <Loader size="lg"/>}
+                            {pokemons.length === 0 && (!search || search.length === 0) && <Loader size="lg"/>}
                             {pokemons.length > 0 && Object.keys(pokemons).map((pokemon, index) => {
                                 if (index >= maxIndex - pokedexListElementsToShow && index < maxIndex) {
                                     return <PokemonCard key={index} pokemon={pokemons[pokemon]}/>
                                 }
                                 return null
                             })}
-
+                            {search && search.length > 0 && <>
+                                <img src={'https://assets.pokemon.com/assets/cms2/img/pokedex/detail/201.png'}
+                                     alt={'unown'}/>
+                                <h3>Pokemon not found</h3>
+                            </>
+                            }
                         </div>
                     </Panel>
                     <Pagination {...paginationProps}/>
