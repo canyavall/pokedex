@@ -30,21 +30,10 @@ const PokedexReducer = {
 
         return {
             ...state,
-            pokemons: pokemons,
-            pokemonsRequestState: RequestState.Loaded
+            pokemons: pokemons
         }
     },
-    /**
-     * Set Pokemons request to error if fetch failed
-     * @param state
-     * @param payload
-     */
-    setPokemonsRequestState: (state: PokedexState, payload: RequestState): PokedexState => {
-        return {
-            ...state,
-            pokemonsRequestState: payload
-        }
-    },
+
     /**
      * Set the details from a pokemon into the pokemon in the pokemons object
      * @param state
@@ -59,17 +48,6 @@ const PokedexReducer = {
         }
     },
 
-    /**
-     * Set Pokemon request to error if fetch failed
-     * @param state
-     * @param payload
-     */
-    setPokemonRequestState: (state: PokedexState, payload: RequestState): PokedexState => {
-        return {
-            ...state,
-            pokemonRequestState: payload
-        }
-    },
     /**
      * Change current page for pagination
      * @param state

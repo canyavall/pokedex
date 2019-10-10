@@ -24,11 +24,6 @@ const usePokedex = (): UsePokedex => {
     const pokedexListElementsToShow = useSelector(select.pokedex.getPokedexListElementsToShow)
     const pokedexListOrderBy = useSelector(select.pokedex.getPokedexListOrderBy)
 
-    // Fetch data
-    useEffect(() => {
-        store.dispatch.pokedex.fetchPokemons()
-    }, [pokemons])
-
     if (search && search.length > 0) {
         pokemons = pokemons.filter((pokemon) => {
             const checkInName = pokemon.name.toLowerCase().indexOf(search.toLowerCase()) > -1

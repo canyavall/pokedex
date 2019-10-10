@@ -18,11 +18,6 @@ const useMyPokemons = (): UseMyPokemons => {
 
     const pokemons = useSelector(select.pokedex.getPokemons)
 
-    // Fetch data
-    useEffect(() => {
-        store.dispatch.pokedex.fetchPokemons()
-    }, [pokemons])
-
     // Get data from reducer
     const myPokemonsList = useSelector(select.mypokemon.getMyPokemonList)
     const myPokemonsListWithData = useSelector(select.mypokemon.getMyPokemonListWithData)

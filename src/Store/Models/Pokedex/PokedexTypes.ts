@@ -256,11 +256,7 @@ export enum OrderPokedexBy {
 
 export interface PokedexState {
     pokemons: Pokemon[],
-    pokemonsRequestState: RequestState,
-    pokemonRequestState: RequestState,
 
-    types: Type[],
-    typesRequestState: RequestState,
 
     pokedexListCurrentPage: PokedexListCurrentPage,
     pokedexListElementsToShow: PokedexListElementsToShow,
