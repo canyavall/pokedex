@@ -1,8 +1,8 @@
-import {useEffect, useState} from "react";
+import {useState} from "react";
 import {useSelector} from 'react-redux'
 import select from "../../Store/selectors";
-import store from "../../Store/store";
 import {Pokemon} from "../../Store/Models/Pokedex/PokedexTypes";
+import store from "../../Store/store";
 
 export interface UsePokedex {
     pokemons: Pokemon[],
@@ -33,7 +33,9 @@ const usePokedex = (): UsePokedex => {
             }
             return false
         })
+        store.dispatch.pokedex.setPokedexListCurrentPage(1)
     }
+
 
     // Prepare constants
     const maxIndex = pokedexListCurrentPage * pokedexListElementsToShow

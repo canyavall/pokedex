@@ -1,7 +1,5 @@
 import {useSelector} from 'react-redux'
 import select from "../../Store/selectors";
-import {useEffect} from "react";
-import store from "../../Store/store";
 import {Pokemon} from "../../Store/Models/Pokedex/PokedexTypes";
 
 export interface UseMyPokemons {

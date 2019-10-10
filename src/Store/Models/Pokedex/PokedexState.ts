@@ -1,4 +1,4 @@
-import {OrderPokedexBy, PokedexState, RequestState} from "./PokedexTypes";
+import {OrderPokedexBy, PokedexState} from "./PokedexTypes";
 
 const pokedexInitialState: PokedexState = {
     pokemons: [],

@@ -35,7 +35,7 @@ const Pokedex: React.FC = () => {
                                 }
                                 return null
                             })}
-                            {search && search.length > 0 && <>
+                            {search && search.length > 0 && pokemons.length === 0 && <>
                                 <img src={'https://assets.pokemon.com/assets/cms2/img/pokedex/detail/201.png'}
                                      alt={'unown'}/>
                                 <h3>Pokemon not found</h3>

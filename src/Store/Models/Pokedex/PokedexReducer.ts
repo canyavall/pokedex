@@ -1,5 +1,5 @@
 // @ts-ignore
-import {Details, OrderPokedexBy, PokedexState, PokemonResponse, RequestState} from "./PokedexTypes"
+import {Details, OrderPokedexBy, PokedexState, PokemonResponse} from "./PokedexTypes"
 
 /**
  * Channels Reducer
