@@ -28,7 +28,6 @@ const MyPokemon: React.FC = () => {
         style: styles.pagination
     }
 
-    console.log(myPokemonsListWithData)
     return (
         <>
             <Panel style={styles.panelStyle} bordered>

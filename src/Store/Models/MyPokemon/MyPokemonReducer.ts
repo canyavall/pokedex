@@ -37,10 +37,10 @@ const MyPokemonReducer = {
      * @param state
      * @param payload
      */
-    setMyPokemonListCurrentPage: (state: PokedexState, payload: number): PokedexState => {
+    setMyPokemonListCurrentPage: (state: MyPokemonState, payload: number): MyPokemonState => {
         return {
             ...state,
-            pokedexListCurrentPage: payload
+            myPokemonListCurrentPage: payload
         }
     },
 
@@ -49,10 +49,10 @@ const MyPokemonReducer = {
      * @param state
      * @param payload
      */
-    setMyPokemonListElementsToShow: (state: PokedexState, payload: number): PokedexState => {
+    setMyPokemonListElementsToShow: (state: MyPokemonState, payload: number): MyPokemonState => {
         return {
             ...state,
-            pokedexListElementsToShow: payload
+            myPokemonListElementsToShow: payload
         }
     },
 
@@ -61,10 +61,10 @@ const MyPokemonReducer = {
      * @param state
      * @param payload
      */
-    setMyPokemonListOrderBy: (state: PokedexState, payload: OrderPokedexBy): PokedexState => {
+    setMyPokemonListOrderBy: (state: MyPokemonState, payload: OrderPokedexBy): MyPokemonState => {
         return {
             ...state,
-            pokedexListOrderBy: payload
+            myPokemonListOrderBy: payload
         }
     }
 }

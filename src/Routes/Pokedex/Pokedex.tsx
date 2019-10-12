@@ -35,7 +35,7 @@ const Pokedex: React.FC = () => {
                                          maxIndex={maxIndex}/>
                             {search && search.length > 0 && pokemons.length === 0 && <>
                                 <img src={'https://assets.pokemon.com/assets/cms2/img/pokedex/detail/201.png'}
-                                     alt={'unown'}/>
+                                     alt={'unknown'}/>
                                 <h3>Pokemon not found</h3>
                             </>
                             }
