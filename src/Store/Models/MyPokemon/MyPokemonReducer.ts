@@ -1,5 +1,5 @@
 import {MyPokemonState} from './MyPokemonTypes';
-import {OrderPokedexBy, PokedexState} from "../Pokedex/PokedexTypes";
+import {OrderPokedexBy} from "../Pokedex/PokedexTypes";
 
 /**
  * Channels Reducer
