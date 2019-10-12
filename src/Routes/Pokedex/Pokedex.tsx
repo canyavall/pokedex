@@ -1,8 +1,9 @@
 import React from 'react';
-import {Col, Input, Loader, Pagination, Panel, Row} from 'rsuite';
+import {Col, Input, Pagination, Panel, Row} from 'rsuite';
 import usePokedex from "./PokedexHook";
-import PokemonCard from "../../Components/PokemonCard/PokemonCard";
 import store from "../../Store/store";
+import PokedexGrid from "../../Components/PokedexGrid/PokedexGrid";
+import Loader from "rsuite/es/Loader/Loader";
 
 const Pokedex: React.FC = () => {
     const {pokemons, pokedexListCurrentPage, pokedexListElementsToShow, maxIndex, numberOfPages, search, setSearch} = usePokedex()
@@ -28,13 +29,10 @@ const Pokedex: React.FC = () => {
                 <Col md={20}>
                     <Panel style={styles.panelStyle} bordered>
                         <div style={styles.gridContainer}>
-                            {pokemons.length === 0 && (!search || search.length === 0) && <Loader size="lg"/>}
-                            {pokemons.length > 0 && Object.keys(pokemons).map((pokemon, index) => {
-                                if (index >= maxIndex - pokedexListElementsToShow && index < maxIndex) {
-                                    return <PokemonCard key={index} pokemon={pokemons[pokemon]}/>
-                                }
-                                return null
-                            })}
+                            {(pokemons.length === 0) && <Loader size="lg" content="Large"/>}
+                            <PokedexGrid pokemons={pokemons}
+                                         elementsToShow={pokedexListElementsToShow}
+                                         maxIndex={maxIndex}/>
                             {search && search.length > 0 && pokemons.length === 0 && <>
                                 <img src={'https://assets.pokemon.com/assets/cms2/img/pokedex/detail/201.png'}
                                      alt={'unown'}/>

@@ -8,13 +8,10 @@ export const getMyPokemonListCurrentPage = (state: State): PokedexListCurrentPag
 export const getMyPokemonListElementsToShow = (state: State): PokedexListElementsToShow => state.mypokemon.myPokemonListElementsToShow
 
 export const getMyPokemonListWithData = (state: State) => {
-    let myPokemons = {}
+    let myPokemons = []
     state.mypokemon.myPokemonList.forEach((id) => {
-        myPokemons[id] = state.pokedex.pokemons.find((pokemon) => {
-            if (pokemon.id === id){
-                return pokemon
-            }
-            return false
+        state.pokedex.pokemons.find((pokemon) => {
+            (pokemon.id === id) && myPokemons.push(pokemon)
         })
     })
 
