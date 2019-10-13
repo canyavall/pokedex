@@ -57,3 +57,17 @@ export const extractTypesFromData = memoize((pokemonDetails: Details) => {
         return name
     })
 })
+
+/**
+ * Returns pokemon image url
+ * @param {number} id
+ * @returns {string}
+ */
+export const getPokemonImage = (id: number) => {
+    const finalId = idToString(id)
+    return `https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${finalId}.png`
+}
+
+export const idToString = (id: number) => {
+    return id.toString().padStart(3, "000")
+}

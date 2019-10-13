@@ -17,3 +17,7 @@ export const getMyPokemonListWithData = (state: State) => {
 
     return myPokemons
 }
+
+export const isPokemonInMyPokemons = (state: State) => (id: number) => {
+    return state.mypokemon.myPokemonList.includes(id)
+}

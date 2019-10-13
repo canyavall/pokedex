@@ -3,6 +3,7 @@ import store from "../../Store/store";
 import select from "../../Store/selectors";
 import {useSelector} from 'react-redux'
 import {Details, Pokemon} from "../../Store/Models/Pokedex/PokedexTypes";
+import {getPokemonImage, idToString} from "../../Utils/utils";
 
 export interface UsePokemonCard {
     isHover: boolean;
@@ -31,18 +32,17 @@ const usePokemonCard = (pokemon: Pokemon): UsePokemonCard => {
     const [showModal, setShowModal] = useState(false)
 
     const pokemons = useSelector(select.pokedex.getPokemons)
-    const myPokemonList = useSelector(select.mypokemon.getMyPokemonList)
+    const isInMyPokemons = useSelector((state) => select.mypokemon.isPokemonInMyPokemons(state)(id))
     const pokemonDetails = pokemons && pokemons[id] && pokemons[id].details
 
-    let finalId = id.toString().padStart(3, "000")
-    const imageUrl = `https://assets.pokemon.com/assets/cms2/img/pokedex/detail/${finalId}.png`
+    let finalId = idToString(id)
+    const imageUrl = getPokemonImage(id)
 
     const onOpenDetail = async () => {
         !pokemonDetails && await store.dispatch.pokedex.fetchPokemon(id)
         setShowModal(true)
     }
 
-    const isInMyPokemons = myPokemonList.includes(id)
 
     return {
         isHover,
