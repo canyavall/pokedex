@@ -1,4 +1,4 @@
-import {useState} from "react";
+import {SyntheticEvent, useState} from "react";
 import store from "../../Store/store";
 import select from "../../Store/selectors";
 import {useSelector} from 'react-redux'
@@ -22,6 +22,9 @@ export interface UsePokemonCard {
 
     pokemonDetails: Details;
     isInMyPokemons: boolean;
+
+    addPokemon: (event: SyntheticEvent<Element, Event>) => void;
+    removePokemon: (event: SyntheticEvent<Element, Event>) => void;
 }
 
 const usePokemonCard = (pokemon: Pokemon): UsePokemonCard => {
@@ -43,6 +46,15 @@ const usePokemonCard = (pokemon: Pokemon): UsePokemonCard => {
         setShowModal(true)
     }
 
+    const addPokemon = (e) => {
+        e.stopPropagation()
+        store.dispatch.mypokemon.addPokemon(id)
+    }
+
+    const removePokemon = (e) => {
+        e.stopPropagation()
+        store.dispatch.mypokemon.removePokemon(id)
+    }
 
     return {
         isHover,
@@ -60,7 +72,10 @@ const usePokemonCard = (pokemon: Pokemon): UsePokemonCard => {
         onOpenDetail,
 
         pokemonDetails,
-        isInMyPokemons
+        isInMyPokemons,
+
+        addPokemon,
+        removePokemon
     }
 }
 

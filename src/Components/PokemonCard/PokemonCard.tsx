@@ -1,8 +1,10 @@
 import React from 'react';
-import {Icon} from 'rsuite';
+import pokeballColor from '../../img/pb-icon-color.png';
+import pokeballBn from '../../img/pb-icon-bw.png';
 import {Pokemon} from "../../Store/Models/Pokedex/PokedexTypes";
 import PokemonDetail from "../PokemonDetails/PokemonDetails";
 import usePokemonCard from "./PokemonCardHook";
+import {Row, Col} from 'rsuite'
 
 export interface PokemonCardProps {
     pokemon: Pokemon
@@ -21,10 +23,19 @@ const PokemonCard: React.FC<PokemonCardProps> = ({pokemon}) => {
         pokemonDetails,
         isHover,
         setIsHover,
-        isInMyPokemons
+        isInMyPokemons,
+        addPokemon,
+        removePokemon
     } = usePokemonCard(pokemon)
 
     const containerFinalStyle = isHover ? {...styles.container, ...styles.isHover} : styles.container
+
+    let isInMyPokemonsIcon = pokeballBn
+    let onClickIcon = addPokemon
+    if (isInMyPokemons){
+        isInMyPokemonsIcon = pokeballColor
+        onClickIcon = removePokemon
+    }
 
     return (
         <div style={containerFinalStyle}
@@ -33,9 +44,18 @@ const PokemonCard: React.FC<PokemonCardProps> = ({pokemon}) => {
              onMouseLeave={() => setIsHover(false)}
              onMouseUp={() => setIsHover(false)}>
             <div style={styles.contentWrapper}>
-                {showPicture &&
-                <img src={imageUrl} style={styles.image} alt={name} onError={() => setShowPicture(false)}/>}
-                {isInMyPokemons && <Icon icon={'star'} color={'blue'} size="lg"/>}
+                <Row>
+                    <Col md={19}>
+                        {showPicture &&
+                        <img src={imageUrl} style={styles.image} alt={name} onError={() => setShowPicture(false)}/>}
+                    </Col>
+                    <Col md={5} style={styles.pokeballIconWrapper}>
+                        <img src={isInMyPokemonsIcon}
+                             style={styles.pokeballIcon}
+                             onClick={onClickIcon}/>
+                    </Col>
+                </Row>
+
                 <h5>{'#' + finalId + ' - ' + name}</h5>
             </div>
             {showModal &&
@@ -64,7 +84,13 @@ const styles = {
     isHover: {
         border: '1px solid Gainsboro',
         boxShadow: '5px 5px 5px Gainsboro'
-    } as React.CSSProperties
+    } as React.CSSProperties,
+    pokeballIconWrapper: {
+        top: 10
+    },
+    pokeballIcon: {
+        width: 20,
+        height: 20
+    }
 }
-
-export default PokemonCard;
+    export default PokemonCard;
